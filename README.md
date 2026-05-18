@@ -1,5 +1,7 @@
 # Pubmed Weekly Digest
 
+> [繁體中文版](./README.zh-TW.md)
+
 > A Claude Code skill that builds a weekly digest of articles published in the last 7 days across a configurable list of PubMed-indexed journals, annotates each with a TL;DR and a one-line **Hot Take** (positive or snarky), and writes the result to a local Markdown file. Output is in English by default and the language is one prompt-edit away from anything else.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
