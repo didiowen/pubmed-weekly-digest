@@ -2,20 +2,6 @@
 
 A Claude Code skill that builds a weekly digest of articles published in the last 7 days across a configurable list of PubMed-indexed journals, annotates each with a TL;DR and a one-line **Hot Take** (positive or snarky), and writes the result to a local Markdown file. Output is in English by default and the language is one prompt-edit away from anything else.
 
-This is a slimmed-down, **publish-yourself** distribution. Two things are intentionally absent:
-
-- **Gmail / NEJM-monthly-newsletter refill** — the original private skill pulls in extra NEJM article types (Cases, Images, Perspective, Correspondence) from emailed monthly newsletters. That depends on personal Gmail state, so it's not portable.
-- **Cross-repo push** — the original private skill pushes each digest to a specific public-notes repo via the GitHub API. You'll want your own publish target, so that step is omitted.
-
-If you want either feature back, fork further — they're discrete additions, not entangled with the core logic.
-
-## What stays
-
-- The whole journal-search → metadata-fetch → CrossRef-refill → annotate → render pipeline
-- The ISO-week label convention (covers the **just-ended** week)
-- The optional NEJM Originals/Reviews type filter (kept as a worked example you can replicate for other generals)
-- The Hot Take (positive / snarky) tone — change the language or voice in Step 4 if it doesn't fit yours
-
 ## Folder layout
 
 ```
@@ -135,18 +121,6 @@ The annotations in Step 4 are written in **English by default**, with the one-li
 - **Tone label**: rename "Hot Take" to whatever framing fits — "key takeaway", "clinical implication", "bottom line", etc. The two-line per-article block in Step 5 (TL;DR + quote) stays the same; only the words change.
 - **Length / depth**: the default ask is 1–2 sentences. Loosen it to a paragraph if you want more detail, or tighten it to one sentence for skim-friendliness.
 
-## Adding back a publish step
-
-The skill stops after writing the local file. If you want it to commit and/or push:
-
-- **Commit to your vault**: append a `git add` + `git commit` step. Done.
-- **Push to a separate site repo**: clone your site repo as a sibling directory, then `cp` the digest file in and `git -C site-repo push`. A short (~60-line) reference implementation using the GitHub REST API (`push_to_notes.py`) lives in the source repo if you want a starting point.
-- **Open a PR via GitHub MCP**: see the `daily-medical-lit` skill in the source repo for a Step 5 that does `mcp__github__create_pull_request` + `mcp__github__merge_pull_request`.
-
 ## License
 
 MIT — see [`LICENSE`](./LICENSE).
-
-## Credits
-
-Extracted from a private journal-digest skill where the Gmail-monthly-newsletter refill and cross-repo push were Obsidian-vault-specific. Those steps were removed for portability before publishing.
