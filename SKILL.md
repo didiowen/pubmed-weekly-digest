@@ -24,7 +24,7 @@ Edit these values before running the skill in a new vault:
 
 | Key                | Default                                         | Notes                                              |
 |--------------------|-------------------------------------------------|----------------------------------------------------|
-| `OUTPUT_DIR`       | `+/journals`                                    | Where `{week_label}.md` is written                 |
+| `OUTPUT_DIR`       | `output/` (inside this skill folder)            | Where `{week_label}.md` is written                 |
 | `JOURNALS`         | See Step 1 table                                | The list of `[Journal]` queries — customise freely |
 | `CROSSREF_MAILTO`  | `pubmed-weekly-digest@noreply.example`          | CrossRef polite-pool identifier (any valid email)  |
 

@@ -24,7 +24,7 @@ No bundled scripts — the entire skill is prompt-driven.
 1. Drop this folder into the skills directory of any project: `<project>/.claude/skills/pubmed-weekly-digest/`.
 2. Confirm the PubMed MCP server is configured.
 3. Open `SKILL.md` and edit the **Configuration** block at the top:
-   - `OUTPUT_DIR`: where to write the digest (default `+/journals`, the original author's Obsidian vault convention)
+   - `OUTPUT_DIR`: where to write the digest (default `output/` inside this skill folder)
    - `JOURNALS`: the list in Step 1
    - `CROSSREF_MAILTO`: any valid email — used as the CrossRef polite-pool identifier
 4. Trigger from Claude Code: ask it to "run the weekly journal digest" or "跑週報", or invoke the skill by name.
