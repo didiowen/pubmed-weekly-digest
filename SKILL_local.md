@@ -303,7 +303,7 @@ Subagent A 的 `N Engl J Med` section 已過濾為 Original Article + Review Art
 
 ---
 
-### Step C2.5 — 缺摘要的全文回退（OA → 機構瀏覽器；PubMed 與 newsletter 皆適用）
+### Step C2.5 — 缺摘要時取得全文（OA → 機構瀏覽器；PubMed 與 newsletter 皆適用）
 
 對任何 abstract 仍為空但**有 DOI** 的文章（含 Subagent A 的 PubMed 篇目與 Subagent B 的 newsletter 篇目）：
 
