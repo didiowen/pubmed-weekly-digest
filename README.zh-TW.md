@@ -1,4 +1,4 @@
-# Pubmed Weekly Digest
+﻿# Pubmed Weekly Digest
 
 > [English version](./README.md)
 
@@ -12,7 +12,9 @@
 
 ```
 pubmed-weekly-digest/
-├── SKILL.md          # skill 本體
+├── SKILL.md          # 快速上手：簡化版，英文輸出，僅需 PubMed
+├── SKILL_cloud.md    # 完整功能：中文摘要、Gmail 月報、PMID 去重
+├── SKILL_local.md    # 本地端版：同 cloud，另增 redirect DOI 解析與機構瀏覽器
 ├── README.md         # 英文版
 ├── README.zh-TW.md   # 本檔案
 └── LICENSE
@@ -20,21 +22,34 @@ pubmed-weekly-digest/
 
 沒有附帶任何腳本，整個 skill 完全由 prompt 驅動。
 
+## 選哪個 skill 檔案？
+
+| 檔案 | 使用時機 | 需求 |
+|------|---------|------|
+| `SKILL.md` | 快速上手——英文輸出，期刊清單自訂，不需要 Gmail | PubMed MCP |
+| `SKILL_cloud.md` | 完整功能——繁體中文 TL;DR 與嘻嘻/不嘻嘻短評、NEJM Gmail 月報（感染科 + 血液腫瘤科）、PMID 去重、OA 全文回退；cloud 與本地均可使用 | PubMed MCP + Gmail MCP |
+| `SKILL_local.md` | 同 `SKILL_cloud.md`，另增 redirect-based DOI 解析（NEJM 月報追蹤連結）與機構瀏覽器付費全文回退 | PubMed MCP + Gmail MCP + 本地 Claude-in-Chrome |
+
+三個檔案共用相同的期刊清單、ISO 週次計算邏輯與 CrossRef 摘要補全。完整功能版額外加入 Gmail 月報層（NEJM 感染科 + 血液腫瘤科每月更新）及更完善的摘要取得 pipeline。
+
+> `SKILL.md` 刻意保持簡單，作為語言無關的快速上手入口。要用完整生產設定，請以 `SKILL_cloud.md` 為起點。
+
 ## 相依套件
 
 - **Claude Code**（含 Skill 系統）—— `https://claude.com/claude-code`
 - 在 Claude Code MCP 設定中啟用的 **PubMed MCP server**
-- 就這些。不需要 Python 套件，最小執行流程也不需要 `.env`。
+- **Gmail MCP server**（*僅 `SKILL_cloud.md` / `SKILL_local.md` 需要*）——用來取得 NEJM 每月 newsletter。若你以 Gmail 帳號直接訂閱 NEJM newsletter，Gmail MCP 開箱即用。若訂閱信箱非 Gmail（如 ProtonMail），請先設定將 NEJM 月報自動轉寄至 Gmail。
 
 ## 安裝設定
 
 1. 把整個資料夾放到任一專案的 skills 目錄底下：`<project>/.claude/skills/pubmed-weekly-digest/`。
-2. 確認 PubMed MCP server 已經設好。
-3. 打開 `SKILL.md`，編輯檔案頂端的 **Configuration** 區塊：
+2. 確認 PubMed MCP server 已設好（若使用完整功能版，另確認 Gmail MCP）。
+3. 打開你選好的 skill 檔案，編輯檔案頂端的 **Configuration** 區塊：
    - `OUTPUT_DIR`：摘要寫到哪裡（預設是 skill 資料夾下的 `output/`）
-   - `JOURNALS`：Step 1 中的期刊清單
+   - `JOURNALS`：Step 1 中的期刊清單（僅 `SKILL.md`）
    - `CROSSREF_MAILTO`：任一個可用的電子郵件，給 CrossRef polite-pool 識別用
-4. 從 Claude Code 觸發：直接跟它說「跑週報期刊摘要」（run the weekly journal digest）、「跑週報」，或以 skill 名稱呼叫。
+   - `SKILL_DIR`：本 skill 的實際路徑，用來存放 PMID 去重快取（`SKILL_cloud.md` / `SKILL_local.md` 適用）
+4. 從 Claude Code 觸發：直接跟它說「跑週報期刊摘要」、「跑週報」，或以 skill 名稱呼叫。
 
 ## 自訂期刊清單
 
