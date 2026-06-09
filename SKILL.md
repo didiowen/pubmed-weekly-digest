@@ -175,47 +175,11 @@ If `abstract` was never filled in, leave both fields blank.
 
 ## Step 5 — Render Markdown
 
-Write the digest to `{OUTPUT_DIR}/{week_label}.md`. Template:
+Write the digest to `{OUTPUT_DIR}/{week_label}.md`.
 
-```markdown
----
-tags: [journal-digest]
-date: {date_to}
-week: {week_label}
----
+Read `{SKILL_DIR}/template.md` for the output scaffold.
 
-# Weekly Journal Digest — {week_label}
-
-> Source: PubMed (edat filter, {date_from} to {date_to}). Journals: Clin Infect Dis, Emerg Infect Dis, MMWR, Transpl Infect Dis, Blood, N Engl J Med. {n} articles total.
-
-## Clin Infect Dis
-
-### {Title}
-**Authors**: {Authors} | **Type**: {Article Type} | **Date**: {PubDate}
-**DOI**: [{DOI}](https://doi.org/{DOI})
-**TL;DR**: 
-
-> **Hot Take**:
-
----
-
-## Emerg Infect Dis
-... (same per-article format)
-
-## MMWR Morb Mortal Wkly Rep
-...
-
-## Transpl Infect Dis
-...
-
-## Blood
-...
-
-## N Engl J Med
-...
-
-*Source: PubMed (retrieved {today})*
-```
+**Expand journal sections**: for each journal in your Step 1 list, replace a `## {Journal N}` stub with the real `## {Abbreviation}` section using the article-block format in the template. Add extra sections if you have more journals than stubs; remove extras if fewer. Fill `{journal_list}` in the intro line with a comma-separated list of your journals.
 
 **Formatting rules**:
 
@@ -223,8 +187,6 @@ week: {week_label}
 - No DOI → `PMID: {pmid}` instead of the DOI line
 - Section with no surviving articles → `> No matching articles this week.`
 - Articles separated by `---`
-
-If you swap journals, also rename the `## {section}` headers to match.
 
 ---
 
