@@ -368,7 +368,9 @@ Newsletter 過濾（Heme/Onc 排除 cancer/carcinoma）由 **Subagent B Step B4*
 存至 `{OUTPUT_DIR}/{week_label}.md`。
 若該檔已存在：只有確認是本次 routine 產生的暫存/中斷輸出時才覆寫；若是既有手動檔案或來源不明，先詢問使用者。
 
-執行 `Read {SKILL_DIR}/template.md` 取得輸出骨架，填入所有 `{placeholder}` 後寫出。
+執行 `Read {SKILL_DIR}/template.md` 取得輸出骨架。
+
+**展開 journal sections**：依 Subagent A 期刊表，將各 `## {Journal N}` 佔位替換為實際期刊 section（使用 template 的文章格式區塊），多餘佔位刪除、不夠則增補；將 `{journal_list}` 填入開頭說明行。若 `run_newsletter == True`，在所有 PubMed section 後附加兩個 NEJM Monthly section（格式見下方**格式細節**）。填入所有其他 `{placeholder}` 後寫出。
 
 **格式細節**：
 - Authors：單一作者用全名；多位作者寫「姓 縮寫 et al.」
