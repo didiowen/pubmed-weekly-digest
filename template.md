@@ -13,11 +13,9 @@
   Behavioural rules (DOI vs tracking-URL, pathogen italics, etc.) live in SKILL_cloud.md / SKILL_local.md.
 -->
 ---
-tags: [ID, hematology, share]
+tags: [journal-digest]
 date: {date_to}
 week: {week_label}
-share: true
-categories: [medicine, journal-digest]
 ---
 
 # Weekly Journal Digest — {week_label}
