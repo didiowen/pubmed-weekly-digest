@@ -368,72 +368,7 @@ Newsletter 過濾（Heme/Onc 排除 cancer/carcinoma）由 **Subagent B Step B4*
 存至 `{OUTPUT_DIR}/{week_label}.md`。
 若該檔已存在：只有確認是本次 routine 產生的暫存/中斷輸出時才覆寫；若是既有手動檔案或來源不明，先詢問使用者。
 
-```markdown
----
-tags: [journal-digest]
-date: {date_to}
-week: {week_label}
----
-
-# Weekly Journal Digest — {week_label}
-
-> 資料來源：PubMed（edat 過濾，{date_from} 至 {date_to}）。涵蓋期刊：Clin Infect Dis、Emerg Infect Dis、MMWR、N Engl J Med（Originals + Reviews，無主題過濾）、Transpl Infect Dis、Blood。共 __ 篇。NEJM Cases / Images / Perspective / Correspondence 由本月 NEJM ID 與 Hema/Onc 月報（Gmail）補完。
-
-<!-- more -->
-
-## Clin Infect Dis
-
-### {Title}
-**Authors**: {Authors} | **Type**: {Article Type} | **Date**: {PubDate}
-**DOI**: [{DOI}](https://doi.org/{DOI})
-**TL;DR**: 
-
-> **嘻嘻/不嘻嘻**：
-
----
-
-## Emerg Infect Dis
-...（同上格式）
-
-## MMWR Morb Mortal Wkly Rep
-...
-
-## Transpl Infect Dis
-...
-
-## Blood
-...（同上格式）
-
-## N Engl J Med
-...（同上格式）
-
-## NEJM Monthly — Infectious Disease（{nejm_id_issue_date}）
-
-> 資料來源：Gmail（Infectious Disease Update from NEJM，發行日 {nejm_id_issue_date}）。補完 PubMed N Engl J Med section 之外的 Cases / Images / Perspective / Correspondence 等，無主題過濾。
-
-### {Title}
-**Authors**: {Authors} | **Type**: {Article Type} | **Date**: {nejm_id_issue_date}
-**DOI**: [{DOI}](https://doi.org/{DOI})  <!-- 無 DOI 時改用 [**NEJM Newsletter**]({tracking_url}) -->
-**TL;DR**: 
-
-> **嘻嘻/不嘻嘻**：
-
----
-
-## NEJM Monthly — Hematology/Oncology（{nejm_heme_issue_date}）
-
-> 資料來源：Gmail（Hematology/Oncology Update from NEJM，發行日 {nejm_heme_issue_date}）。補完 PubMed N Engl J Med section 之外的 Cases / Images / Perspective / Correspondence 等。已濾除標題含 cancer / carcinoma 之篇目。
-
-### {Title}
-**Authors**: {Authors} | **Type**: {Article Type} | **Date**: {nejm_heme_issue_date}
-**DOI**: [{DOI}](https://doi.org/{DOI})  <!-- 無 DOI 時改用 [**NEJM Newsletter**]({tracking_url}) -->
-**TL;DR**: 
-
-> **嘻嘻/不嘻嘻**：
-
-*資料來源：PubMed（articles retrieved {today}）*
-*NEJM 月報資料來源：Gmail；abstract / DOI 優先由追蹤 URL redirect 解析，fallback PubMed 標題搜尋及 CrossRef 回查取得。*
-```
+執行 `Read {SKILL_DIR}/template.md` 取得輸出骨架，填入所有 `{placeholder}` 後寫出。
 
 **格式細節**：
 - Authors：單一作者用全名；多位作者寫「姓 縮寫 et al.」
@@ -443,6 +378,7 @@ week: {week_label}
 - 某 section 無文章：寫 `> 今日無符合條件的新文章。`
 - 文章間用 `---` 分隔
 - **`run_newsletter == False`（本月月報已收錄）**：兩個 NEJM Monthly section 標題的 issue_date 寫 `（本月已收錄）`（**不可含 4 位年份**——閘門以標題中的真實發行年份判定本月是否已收錄；含年份會被下個月的閘門誤判），section 內各寫一行佔位 `> 本月 NEJM 月報已於 {prior_week} digest 收錄，本週不重複。`。
+- 頁尾 NEJM 月報說明行：改為 `*NEJM 月報資料來源：Gmail；abstract / DOI 優先由追蹤 URL redirect 解析，fallback PubMed 標題搜尋及 CrossRef 回查取得。*`
 
 ---
 
