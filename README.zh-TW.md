@@ -1,8 +1,8 @@
-﻿# Pubmed Weekly Digest
+# Pubmed Weekly Digest
 
 > [English version](./README.md)
 
-一個 Claude Code skill，針對你預先設定的一份 PubMed 期刊清單，彙整過去 7 天內刊出的文章，為每篇文章寫一段 TL;DR 與一句話的 **Hot Take**（捧或酸都可以），最後輸出成一份本機的 Markdown 檔案。輸出預設是英文，想換語言只要改一處 prompt 就好。
+一個 Claude Code skill，針對你預先設定的一份 PubMed 期刊清單，彙整過去 7 天內刊出的文章，為每篇文章寫一段 TL;DR 與一句話的 **嘻嘻/不嘻嘻**，最後輸出成一份本機的 Markdown 檔案。輸出預設是英文，想換語言只要改一處 prompt 就好。
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Skill%20Based-blueviolet?logo=anthropic)](https://claude.ai/claude-code)
